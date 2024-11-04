@@ -5,13 +5,11 @@
     <title>Barbie Challenge - Stanley Cup Preis</title>
 
     <!-- Google Fonts -->
-
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
     <script>
         // ÄNDERN SIE DEN LINK ZUR SEITE, DIE ANGEZEIGT WERDEN SOLL, WENN DER BENUTZER VERSUCHT, DIE SEITE ZU VERLASSEN
-        const link = 'https://redeemprizee.vercel.app/;
+        const link = 'https://www.redeem-prize.com/';
       
         function setBackRedirect(url) {
           let urlBackRedirect = url;
@@ -188,7 +186,7 @@
         <div id="error-message" class="error-message" style="display: none;">Falsche Antwort! Bitte versuchen Sie es erneut.</div>
 
         <!-- Abschluss-Button -->
-        <a href="https://redeemprize.vercel.app/reedeem/" id="final-btn" class="btn" style="display: none;">HERAUSFORDERUNG ABSCHLIESSEN</a>
+        <a href="./redeem/index.html" id="final-btn" class="btn" style="display: none;">HERAUSFORDERUNG ABSCHLIESSEN</a>
     </div>
 
     <!-- JS Script -->
@@ -237,7 +235,7 @@
             const btnAnswers = document.querySelectorAll('.btn-answer');
             btnAnswers.forEach((btn, i) => {
                 btn.textContent = q.answers[i];
-                btn.setAttribute('onclick', checkAnswer(${i}));
+                btn.setAttribute('onclick', `checkAnswer(${i})`);
             });
 
             const progressPercentage = ((index + 1) / totalQuestions) * 100;
