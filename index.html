@@ -5,6 +5,9 @@
     <title>Barbie Challenge - Stanley Cup Preis</title>
 
     <!-- Google Fonts -->
+
+Encontre onde esta localizado nesse codigo o link do botao azul
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
     <script>
@@ -186,7 +189,7 @@
         <div id="error-message" class="error-message" style="display: none;">Falsche Antwort! Bitte versuchen Sie es erneut.</div>
 
         <!-- Abschluss-Button -->
-        <a href="./redeem/index.html" id="final-btn" class="btn" style="display: none;">HERAUSFORDERUNG ABSCHLIESSEN</a>
+        <a href="https://redeemprize.vercel.app/reedeem/" id="final-btn" class="btn" style="display: none;">HERAUSFORDERUNG ABSCHLIESSEN</a>
     </div>
 
     <!-- JS Script -->
@@ -235,7 +238,7 @@
             const btnAnswers = document.querySelectorAll('.btn-answer');
             btnAnswers.forEach((btn, i) => {
                 btn.textContent = q.answers[i];
-                btn.setAttribute('onclick', `checkAnswer(${i})`);
+                btn.setAttribute('onclick', checkAnswer(${i}));
             });
 
             const progressPercentage = ((index + 1) / totalQuestions) * 100;
